@@ -1,0 +1,139 @@
+.left-menu {
+  max-width: 380px;
+  width: 100%;
+  padding-top: 20px;
+  background-color: #0d1117;
+}
+.left-menu__test {
+  position: fixed;
+  height: 100vh;
+  background-color: #0d1117;
+  max-width: 380px;
+  width: 100%;
+}
+.left-menu__contacts-img {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.left-menu__contacts-img:hover {
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.left-menu__logo {
+  display: block;
+  margin: 0 auto;
+  width: 160px;
+  height: 50px;
+  object-fit: cover;
+}
+.left-menu__contacts {
+  display: flex;
+  margin: 10px 0px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.left-menu__item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  gap: 15px;
+  padding-left: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.left-menu__img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.left-menu__title {
+  margin-top: 3px;
+  font-size: 16px;
+  color: white;
+}
+
+.left-menu__subtitle {
+  font-size: 14px;
+  color: gray;
+  margin-top: 10px;
+  max-width: 400px;
+  width: 100%;
+  max-height: 300px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.left-menu__item:hover {
+  background-color: #151d29;
+}
+
+.left-menu__item_type_chosen {
+  transition: all 0.3s linear;
+  background-color: #151d29;
+}
+
+@media screen and (max-width: 1030px) {
+  .left-menu {
+    max-width: 328px;
+    width: 100%;
+    margin: 0;
+  }
+  .left-menu__subtitle {
+    max-width: 200px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 843px) {
+  .left-menu {
+    max-width: 65px;
+  }
+
+  .left-menu__title_s {
+    display: none;
+  }
+  .left-menu__subtitle {
+    display: none;
+  }
+  .left-menu__contacts {
+    display: none;
+  }
+  .left-menu__title {
+    display: none;
+  }
+
+  .left-menu__img {
+    margin-right: 50px;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .left-menu__subtitle {
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 439px) {
+  .left-menu__subtitle {
+    display: none;
+  }
+
+  .left-menu__img {
+    width: 25px;
+    height: 25px;
+  }
+  .left-menu {
+    width: 30px;
+  }
+  .left-menu__item {
+    padding-left: 0px;
+  }
+}

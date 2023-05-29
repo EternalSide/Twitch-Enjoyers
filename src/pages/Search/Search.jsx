@@ -1,104 +1,84 @@
-import React from 'react'
-
+import React, { useState, useRef, useEffect } from "react";
+import { Pasti } from "../../materials/Pasti";
+import Form from "../../components/Form/Form";
+import Post from "../../components/Post/Post";
+import "./Search.css";
+import SearchButton from "./SearchButton";
+import { useMemo, memo } from "react";
 const Search = () => {
+  const [searchResults, setSearchResults] = useState(null);
+  const [test, setTest] = useState([]);
+  const getSearchResults = (data) => {
+    return setSearchResults(data);
+  };
+  const searchRef = useRef(null);
+
+  // useEffect(() => {
+  //   searchRef?.current?.scrollIntoView();
+  // }, [searchResults]);
+  useEffect(() => {
+    setTest(false);
+  }, []);
+
+  useEffect(() => {
+    setTest(true);
+    console.log(searchResults);
+  }, [searchResults]);
+
   return (
-    <div class="main-block main-block_type_search">
-    <button  type="button" class="search__button">Вниз</button>
-    <form action="#" class="send-form search-form ">
-   <button type = "submit" class="pngte">Отправить</button>
-      <input type="text" name="" id="" class="search-input" placeholder="Введите ваше сообщение.." />
-    </form>
-   
-  <div class="messages  search ">
-      <div class="post container__block_type_info-search">
-        <img
-          src="https://avatars.githubusercontent.com/u/118743608?v=4"
-          alt=""
-          class="pic"
-        />
-        <div class="container__block ">
+    <>
+      <div className="fakeheight" />
+      <Form
+        placeholder="Введите запрос"
+        makeSubmit={(searchText) => {
+          const searchResult = Pasti.filter((pasta) =>
+            pasta.text.includes(searchText)
+          );
+          return setSearchResults(searchResult);
+        }}
+      />
+      <div class="messages  search ">
+        {searchResults ? (
+          <Post message={`Совпадений: ${searchResults.length}`} />
+        ) : (
+          false
+        )}
+        <Post>
           <p class="pasta">
-            <span class="pastabefore">Lesabone:</span>
-         Поиск среди всех паст в базе 
-         
-      <button class="random__off">Рандом выключен</button>
-<div class="popular__options">
-<div class="hide">
-<div class="">
-<h3 class="popular__title">Популярные запросы:</h3>
+            Поиск среди всех паст в базе
+            <div class="popular__options">
+              <h3 class="popular__title">Популярные запросы:</h3>
 
-</div>
-<h3 class="hide__title">Скрыть</h3>
-</div>
-<div class="hide__block">
-<div class="popular__buttons">
-<button class="all__button ">Все</button>
-<button class="popular__button ">Папич</button>
-<button class="popular__button">Чат</button>
-<button class="popular__button">хуй</button>
-<button class="popular__button">кабан</button>
-<button class="popular__button">стример</button>
-</div>
-
-<div class="popular__smile">
-<div class="fle">
-<h3 class="popular__title">Смайлики: </h3>
-<li class="show__smiles">
-
-<div class="smiles">
-  <h4 class= "smiles__title">Все смайлы:</h4>
-    <div class="smiles__container">
-  <button class="popular__button popular__button_all">🍺</button>
-  <button class="popular__button popular__button_all">😳</button>
-  <button class="popular__button popular__button_all">😡</button>
-  <button class="popular__button popular__button_all">😍</button>
-  <button class="popular__button popular__button_all" >😁</button>
-  <button class="popular__button popular__button_all">😏</button>
-  <button class="popular__button popular__button_all">🚬</button>
-  <button class="popular__button popular__button_all">😪</button>
-  <button class="popular__button popular__button_all">🤡</button>
-  <button class="popular__button popular__button_all">😜</button>
-  <button class="popular__button popular__button_all" >😂</button>
-  <button class="popular__button popular__button_all">😎</button>
-  <button class="popular__button popular__button_all">💙</button>
-  <button class="popular__button popular__button_all">😈</button>
-  <button class="popular__button popular__button_all">💝</button>
-  <button class="popular__button popular__button_all">💝</button>
-  <button class="popular__button popular__button_all">🔥</button>
-  <button class="popular__button popular__button_all">😆</button>
-
-</div>
-</div>
-
-
-</li>
-
-
-</div>
-<div class="popular__buttons">
-<button class="popular__button ">🍺</button>
-<button class="popular__button">😡</button>
-<button class="popular__button">😍</button>
-<button class="popular__button">😁</button>
-<button class="popular__button">😏</button>
-<button class="popular__button">😜</button>
-</div>
-</div>
-</div>
-     </div>       </p> 
-          
-          
-          
-          
-          </div>
-          
+              <div class="hide__block">
+                <div class="popular__buttons">
+                  <SearchButton
+                    text="Папич"
+                    setSearchResults={setSearchResults}
+                  />
+                  <SearchButton
+                    text="стример"
+                    setSearchResults={setSearchResults}
+                  />
+                  <SearchButton
+                    text="чат"
+                    setSearchResults={setSearchResults}
+                  />
+                  <SearchButton
+                    text="кабан"
+                    setSearchResults={setSearchResults}
+                  />
+                </div>
+              </div>
+            </div>{" "}
+          </p>
+        </Post>
       </div>
-      
-    </div>
-    <div class="search__container"></div>
-  
-  </div>
-  )
-}
-
-export default Search
+      <div class="search__container">
+        {searchResults?.map((pasta) => {
+          return <Post buttons message={pasta.text} />;
+        })}
+      </div>
+    </>
+  );
+};
+export default Search;

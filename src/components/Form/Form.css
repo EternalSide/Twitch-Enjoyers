@@ -1,0 +1,23 @@
+.form__container {
+  position: relative;
+}
+
+.form__input {
+  position: fixed;
+  bottom: 0;
+  background-color: #0d1117;
+  width: 100%;
+  border: none;
+  padding-bottom: 50px;
+  color: white;
+  padding-left: 5px;
+  padding-top: 10px;
+  font-size: 14px;
+  border-top: 1px solid #242424;
+}
+.form__input::placeholder {
+  font-size: 16px;
+}
+.form__input:focus {
+  outline: none;
+}

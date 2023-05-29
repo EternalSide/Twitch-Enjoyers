@@ -1,0 +1,16 @@
+.main-block_type_news {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow-y: scroll;
+}
+
+.main-block_type_news p,
+h3,
+h4 {
+  display: inline;
+}
+
+.messages__dop {
+  color: rgb(185, 158, 158);
+}

@@ -1,0 +1,70 @@
+.container__block {
+  max-width: 430px;
+  width: 100%;
+  background-color: #0e0e10;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.post {
+  display: flex;
+  gap: 5px;
+  margin-left: 2%;
+}
+.pic {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 10px;
+}
+
+.pic:hover {
+  transition: 0.2s;
+  opacity: 0.8;
+}
+.search__button {
+  display: block;
+  cursor: pointer;
+  padding: 3px;
+  background-color: rebeccapurple;
+  color: white;
+  cursor: pointer;
+  width: 95px;
+  height: 35px;
+  font-size: 14px;
+  border: none;
+}
+.popular__buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.popular__options {
+  margin-top: 15px;
+}
+
+.pastabefore {
+  color: red;
+}
+
+.smiles {
+  padding-bottom: 150px;
+}
+
+.popular__button {
+  background-color: rebeccapurple;
+  border: none;
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.messages {
+}

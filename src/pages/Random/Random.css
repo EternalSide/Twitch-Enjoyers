@@ -1,0 +1,24 @@
+.main-block_type_random {
+  justify-content: flex-end;
+  transition: all 1s;
+}
+.random__change {
+  position: relative;
+  background: #8e2de2;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4a00e0, #8e2de2);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: inline-block;
+  border: none;
+  color: white;
+  font-size: 15px;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.random__change:active {
+  transform: translate(0px, 2px);
+}

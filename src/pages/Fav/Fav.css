@@ -1,0 +1,9 @@
+.main-block_type_fav {
+  position: relative;
+  overflow-y: scroll;
+  flex-direction: column-reverse;
+  justify-content: inherit;
+  box-sizing: border-box;
+  padding-top: 25px;
+  scroll-behavior: smooth;
+}

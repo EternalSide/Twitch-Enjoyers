@@ -1,0 +1,9 @@
+.chat__messages {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.container__block_message {
+  width: 300px !important;
+}
