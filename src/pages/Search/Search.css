@@ -33,7 +33,7 @@
   background-color: rebeccapurple;
   color: white;
   cursor: pointer;
-  width: 95px;
+  width: 120px;
   height: 35px;
   font-size: 14px;
   border: none;
@@ -43,7 +43,6 @@
   gap: 10px;
   flex-wrap: wrap;
   margin-top: 15px;
-  justify-content: center;
 }
 
 .popular__options {

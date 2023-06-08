@@ -1,17 +1,20 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { GoogleAuthProvider } from "firebase/auth";
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDvWGTmQWCJs3CaXNIYMWpBZ6s106J5HV0",
-  authDomain: "twitch-enjoyers.firebaseapp.com",
-  projectId: "twitch-enjoyers",
-  storageBucket: "twitch-enjoyers.appspot.com",
-  messagingSenderId: "286219011708",
-  appId: "1:286219011708:web:b1d8147f3a74b4fff56bf9",
-  measurementId: "G-49DX305ZM1",
+  apiKey: "AIzaSyDYF6--Z9xO2JPNBzbjaaThUlafLSHVhtQ",
+  authDomain: "twitchenjoyers.firebaseapp.com",
+  projectId: "twitchenjoyers",
+  storageBucket: "twitchenjoyers.appspot.com",
+  messagingSenderId: "676541833560",
+  appId: "1:676541833560:web:84c4e58235e8b00efa452d",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-export { db };
+
+const provider = new GoogleAuthProvider();
+
+export { provider };

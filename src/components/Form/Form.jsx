@@ -1,45 +1,26 @@
 import { useState, useRef } from "react";
 import "./Form.css";
-import { db } from "../../database/firebase";
-import { collection, addDoc } from "firebase/firestore";
-import { serverTimestamp } from "firebase/firestore";
+import SendIcon from "@mui/icons-material/Send";
 const Form = ({ disabled, placeholder, makeSubmit }) => {
   const [userMessage, setUserMessage] = useState("");
-  const formRef = useRef();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    addDoc(collection(db, "messages"), {
-      message: userMessage,
-      time: serverTimestamp(),
-    });
+  const inputRef = useRef();
 
+  const submitForm = (e) => {
+    e.preventDefault();
+    inputRef.current.value = "";
     return makeSubmit(userMessage);
   };
 
-  function changeUserBg(link) {
-    return makeSubmit(link);
-  }
-  const inputRef = useRef();
   return (
     <>
       <div className="form__container">
-        <form
-          className=""
-          onSubmit={(e) => {
-            e.preventDefault();
-            return makeSubmit(inputRef.current.value);
-          }}
-        >
+        <form className="form" onSubmit={submitForm}>
           <input
             onChange={(event) => {
-              // setUserMessage(event.target.value);
+              setUserMessage(event.target.value);
             }}
             disabled={disabled}
-            placeholder={
-              placeholder
-                ? `${placeholder}`
-                : "Данное поле не предназначено для отправки сообщений."
-            }
+            placeholder={placeholder ? `${placeholder}` : "Данное поле не предназначено для отправки сообщений."}
             type="text"
             class="form__input"
             ref={inputRef}

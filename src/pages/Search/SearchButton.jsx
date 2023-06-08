@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Pasti } from "../../materials/Pasti";
-const SearchButton = ({ text, searchPasta, setSearchResults, Results }) => {
+import { useSelector, useDispatch } from "react-redux";
+import { showSearchResults } from "../../features/userFav";
+import { setSearchResultsRedux } from "../../features/userFav.js";
+const SearchButton = ({ text }) => {
+  const dispatch = useDispatch();
   return (
     <>
       <button
         onClick={() => {
           // Если делают тот же запрос отменяем
-          const searchResults = Pasti.filter((pasta) =>
-            pasta.text.includes(text)
-          );
-          setSearchResults(searchResults);
+          const searchResults = Pasti.filter((pasta) => pasta.text.includes(text));
+
+          dispatch(setSearchResultsRedux(searchResults));
         }}
         className="search__button"
       >

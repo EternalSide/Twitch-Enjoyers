@@ -1,45 +1,34 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Pasti } from "../../materials/Pasti";
 import Form from "../../components/Form/Form";
 import Post from "../../components/Post/Post";
 import "./Search.css";
 import SearchButton from "./SearchButton";
-import { useMemo, memo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { showSearchResults } from "../../features/userFav";
+import { setSearchResultsRedux } from "../../features/userFav.js";
 const Search = () => {
   const [searchResults, setSearchResults] = useState(null);
-  const [test, setTest] = useState([]);
-  const getSearchResults = (data) => {
-    return setSearchResults(data);
-  };
-  const searchRef = useRef(null);
-
-  // useEffect(() => {
-  //   searchRef?.current?.scrollIntoView();
-  // }, [searchResults]);
-  useEffect(() => {
-    setTest(false);
-  }, []);
-
-  useEffect(() => {
-    setTest(true);
-    console.log(searchResults);
-  }, [searchResults]);
-
+  const dispatch = useDispatch();
+  const data = useSelector(showSearchResults);
+  console.log(data);
   return (
-    <>
+    <div className="main-block">
       <div className="fakeheight" />
       <Form
-        placeholder="Введите запрос"
+        placeholder="Введите запрос.."
         makeSubmit={(searchText) => {
-          const searchResult = Pasti.filter((pasta) =>
-            pasta.text.includes(searchText)
-          );
-          return setSearchResults(searchResult);
+          //На данный момент поиск не чувствителен к регистру
+          const searchResult = Pasti.filter((pasta) => pasta.text.toLowerCase().includes(searchText.toLowerCase()));
+          dispatch(setSearchResultsRedux(searchResult));
         }}
       />
       <div class="messages  search ">
-        {searchResults ? (
-          <Post message={`Совпадений: ${searchResults.length}`} />
+        {data.length > 0 ? (
+          <Post
+            userPic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYzlfJ9s2OXRYeoraa78-X8pNFgG-AWr5e2fGgCYOghzq11Qqa6URhC6jB8R6tG_FxMKw&usqp=CAU"
+            message={`Совпадений: ${data?.length}`}
+          />
         ) : (
           false
         )}
@@ -51,34 +40,31 @@ const Search = () => {
 
               <div class="hide__block">
                 <div class="popular__buttons">
-                  <SearchButton
-                    text="Папич"
-                    setSearchResults={setSearchResults}
-                  />
-                  <SearchButton
-                    text="стример"
-                    setSearchResults={setSearchResults}
-                  />
-                  <SearchButton
-                    text="чат"
-                    setSearchResults={setSearchResults}
-                  />
-                  <SearchButton
-                    text="кабан"
-                    setSearchResults={setSearchResults}
-                  />
+                  <SearchButton text="Папич" />
+                  <SearchButton text="Стример" />
+                  <SearchButton text="Чат" />
+                  <SearchButton text="Лох" />
+                  <SearchButton text="zxc" />
+                  <SearchButton text="кабан" />
                 </div>
               </div>
-            </div>{" "}
+            </div>
           </p>
         </Post>
       </div>
       <div class="search__container">
-        {searchResults?.map((pasta) => {
-          return <Post buttons message={pasta.text} />;
+        {data?.map((pasta) => {
+          return (
+            <Post
+              userPic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYzlfJ9s2OXRYeoraa78-X8pNFgG-AWr5e2fGgCYOghzq11Qqa6URhC6jB8R6tG_FxMKw&usqp=CAU"
+              buttons
+              message={pasta.text}
+              copyMessage="Скопировать"
+            />
+          );
         })}
       </div>
-    </>
+    </div>
   );
 };
 export default Search;

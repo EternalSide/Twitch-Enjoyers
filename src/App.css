@@ -67,7 +67,7 @@ li {
   background-repeat: repeat;
   background-position: center;
   background-size: cover;
-  background-image: url("https://i.pinimg.com/originals/b7/74/fc/b774fcd59a9ba9b39ad29857f3751dc3.jpg");
+  background-image: url("https://images.hdqwalls.com/wallpapers/office-day-over-in-cyber-city-4k-iw.jpg");
   z-index: 10;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -79,4 +79,13 @@ li {
 }
 .fakeheight {
   min-height: 77px;
+}
+
+@media screen and (max-width: 600px) {
+  .post__pic {
+    display: none;
+  }
+  .main-block {
+    padding-right: 25px;
+  }
 }

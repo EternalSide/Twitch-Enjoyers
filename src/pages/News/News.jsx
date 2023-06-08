@@ -4,8 +4,8 @@ import Form from "../../components/Form/Form";
 import "./News.css";
 const News = () => {
   return (
-    <>
-      <div className="fakeheight" />
+    <div className="main-block">
+      <div className="fakeheight"> </div>
       <div class="messages">
         <Post>
           {" "}
@@ -14,17 +14,15 @@ const News = () => {
           <h4>Что мы добавили на сайт?</h4>
           <ul>
             <li>1. 1к + паст</li>
-            <li>2. Чат для пользователей</li>
-            <li>3. Рандомайзер</li>
+
+            <li>2. Рандомайзер</li>
             <li>3. Поиск </li>
-            <li>4. Избранное </li>
-            <li>5. Смена фона </li>
-            <p className="messages__dop">А также прочие приятные мелочи 🚀</p>
+            <li>4. Избранное* </li>
           </ul>
         </Post>
         <Form disabled />
       </div>
-    </>
+    </div>
   );
 };
 

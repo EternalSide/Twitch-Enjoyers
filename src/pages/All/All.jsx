@@ -6,14 +6,14 @@ import ScrollToTop from "react-scroll-to-top";
 import "./All.css";
 const All = () => {
   return (
-    <>
+    <div className="main-block">
       <div className="fakeheight" />
       <Form disabled />
       {Pasti.map((pasta) => (
-        <Post message={pasta.text} />
+        <Post buttons message={pasta.text} />
       ))}
       <Post />
-    </>
+    </div>
   );
 };
 
