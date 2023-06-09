@@ -10,8 +10,7 @@ const Fav = () => {
   const posts = useSelector(showPosts);
   const dispatch = useDispatch();
   return (
-    <div className="main-block">
-      <div className="fakeheight" />
+    <>
       {posts.length < 1 && <Post message={"Список избранного пуст."} />}
       {posts && (
         <>
@@ -19,7 +18,7 @@ const Fav = () => {
             <Post userPic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJFvDAtbG-cpaYDEhbIy0Bw5ALqYxD2n2yWgrdwLkLZorBnb5ORwfj-_IDU5QXabOCJYg&usqp=CAU">
               <button
                 type="button"
-                class="random__change"
+                className="random__change"
                 onClick={() => {
                   let isExecuted = window.confirm("Вы уверены?");
                   if (isExecuted) {
@@ -47,7 +46,7 @@ const Fav = () => {
         </>
       )}
       <Form disabled />
-    </div>
+    </>
   );
 };
 

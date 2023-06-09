@@ -25,11 +25,12 @@
   height: 30px;
   width: 120px;
   border-radius: 2px;
+  transition: all 0.3s;
 }
 .post__button_green {
   background-color: green;
 }
-.post__button:hover {
+.post__button:hover:enabled {
   transition: 0.2s;
   opacity: 0.9;
 }

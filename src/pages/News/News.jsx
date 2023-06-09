@@ -1,15 +1,12 @@
-import React from "react";
 import Post from "../../components/Post/Post";
 import Form from "../../components/Form/Form";
 import "./News.css";
 const News = () => {
   return (
-    <div className="main-block">
-      <div className="fakeheight"> </div>
-      <div class="messages">
+    <>
+      <div className="messages">
         <Post>
-          {" "}
-          <h3> update v 0.1</h3>
+          <h3 className="text-yellow-300"> update v 0.1</h3>
           <br></br>
           <h4>Что мы добавили на сайт?</h4>
           <ul>
@@ -22,7 +19,7 @@ const News = () => {
         </Post>
         <Form disabled />
       </div>
-    </div>
+    </>
   );
 };
 

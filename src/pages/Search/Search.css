@@ -38,6 +38,9 @@
   font-size: 14px;
   border: none;
 }
+.search__button_green {
+  background-color: green;
+}
 .popular__buttons {
   display: flex;
   gap: 10px;

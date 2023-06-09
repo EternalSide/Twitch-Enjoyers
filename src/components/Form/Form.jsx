@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import "./Form.css";
-import SendIcon from "@mui/icons-material/Send";
+
 const Form = ({ disabled, placeholder, makeSubmit }) => {
   const [userMessage, setUserMessage] = useState("");
   const inputRef = useRef();
@@ -12,22 +12,20 @@ const Form = ({ disabled, placeholder, makeSubmit }) => {
   };
 
   return (
-    <>
-      <div className="form__container">
-        <form className="form" onSubmit={submitForm}>
-          <input
-            onChange={(event) => {
-              setUserMessage(event.target.value);
-            }}
-            disabled={disabled}
-            placeholder={placeholder ? `${placeholder}` : "Данное поле не предназначено для отправки сообщений."}
-            type="text"
-            class="form__input"
-            ref={inputRef}
-          />
-        </form>
-      </div>
-    </>
+    <div className="form__container">
+      <form className="form" onSubmit={submitForm}>
+        <input
+          onChange={(event) => {
+            setUserMessage(event.target.value);
+          }}
+          disabled={disabled}
+          placeholder={placeholder ? `${placeholder}` : "Данное поле не предназначено для отправки сообщений."}
+          type="text"
+          className="form__input"
+          ref={inputRef}
+        />
+      </form>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Pasti } from "../../materials/Pasti";
 import Post from "../../components/Post/Post";
-import { Done } from "@mui/icons-material";
+
 import Form from "../../components/Form/Form";
 import "./Random.css";
 const Random = () => {
@@ -13,8 +13,7 @@ const Random = () => {
   const [copyMessage, setMessage] = useState("Скопировать");
   //Рандом паста
   const [pasta, setPasta] = useState([]);
-  //Оповещение
-  const [notify, setNotify] = useState(false);
+
   const buttonRef = useRef();
   useEffect(() => {
     setPasta(Randomx());
@@ -24,14 +23,13 @@ const Random = () => {
   };
 
   return (
-    <div className="main-block">
-      <div className="fakeheight" />
+    <>
       <Form disabled />
       <Post>
         <button
           ref={buttonRef}
           type="button"
-          class="random__change"
+          className="random__change"
           onClick={() => {
             setMessage("Скопировать");
             return changeRandom();
@@ -49,7 +47,7 @@ const Random = () => {
         block
         buttonCopyFunc
       />
-    </div>
+    </>
   );
 };
 

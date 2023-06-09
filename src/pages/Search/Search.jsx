@@ -8,13 +8,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { showSearchResults } from "../../features/userFav";
 import { setSearchResultsRedux } from "../../features/userFav.js";
 const Search = () => {
-  const [searchResults, setSearchResults] = useState(null);
   const dispatch = useDispatch();
   const data = useSelector(showSearchResults);
-  console.log(data);
+
   return (
-    <div className="main-block">
-      <div className="fakeheight" />
+    <>
       <Form
         placeholder="Введите запрос.."
         makeSubmit={(searchText) => {
@@ -23,7 +21,7 @@ const Search = () => {
           dispatch(setSearchResultsRedux(searchResult));
         }}
       />
-      <div class="messages  search ">
+      <div className="messages  search ">
         {data.length > 0 ? (
           <Post
             userPic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYzlfJ9s2OXRYeoraa78-X8pNFgG-AWr5e2fGgCYOghzq11Qqa6URhC6jB8R6tG_FxMKw&usqp=CAU"
@@ -33,13 +31,13 @@ const Search = () => {
           false
         )}
         <Post>
-          <p class="pasta">
+          <div className="pasta">
             Поиск среди всех паст в базе
-            <div class="popular__options">
-              <h3 class="popular__title">Популярные запросы:</h3>
+            <div className="popular__options">
+              <h3 className="popular__title">Популярные запросы:</h3>
 
-              <div class="hide__block">
-                <div class="popular__buttons">
+              <div className="hide__block">
+                <div className="popular__buttons">
                   <SearchButton text="Папич" />
                   <SearchButton text="Стример" />
                   <SearchButton text="Чат" />
@@ -49,10 +47,10 @@ const Search = () => {
                 </div>
               </div>
             </div>
-          </p>
+          </div>
         </Post>
       </div>
-      <div class="search__container">
+      <div className="search__container">
         {data?.map((pasta) => {
           return (
             <Post
@@ -64,7 +62,7 @@ const Search = () => {
           );
         })}
       </div>
-    </div>
+    </>
   );
 };
 export default Search;
