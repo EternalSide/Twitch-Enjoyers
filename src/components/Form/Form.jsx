@@ -12,20 +12,20 @@ const Form = ({ disabled, placeholder, makeSubmit }) => {
   };
 
   return (
-    <div className="form__container">
-      <form className="form" onSubmit={submitForm}>
-        <input
-          onChange={(event) => {
-            setUserMessage(event.target.value);
-          }}
-          disabled={disabled}
-          placeholder={placeholder ? `${placeholder}` : "Данное поле не предназначено для отправки сообщений."}
-          type="text"
-          className="form__input"
-          ref={inputRef}
-        />
-      </form>
-    </div>
+      <div className="form__container">
+        <form className="form" onSubmit={submitForm}>
+          <input
+            onChange={(event) => {
+              setUserMessage(event.target.value);
+            }}
+            disabled={disabled}
+            placeholder={placeholder ? `${placeholder}` : "Данное поле не предназначено для отправки сообщений."}
+            type="text"
+            className="form__input"
+            ref={inputRef}
+          />
+        </form>
+      </div>
   );
 };
 

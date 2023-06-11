@@ -1,9 +1,19 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUserMobile } from "../../features/userFav";
+import { useMediaQuery } from "@mui/material";
 
-function menuItem({ link, name, info, icon, url }) {
+function MenuItem({ link, name, info, icon, url }) {
+  const dispatch = useDispatch();
+  const mobileResolution = useMediaQuery("(max-width:620px)");
+
   return (
     <NavLink
+      onClick={() => {
+        if (mobileResolution) {
+          dispatch(setUserMobile(true));
+        }
+      }}
       target={link && "_blank"}
       to={url}
       className={({ isActive }) => {
@@ -25,4 +35,4 @@ function menuItem({ link, name, info, icon, url }) {
   );
 }
 
-export default menuItem;
+export default MenuItem;

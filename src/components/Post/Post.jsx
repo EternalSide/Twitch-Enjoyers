@@ -6,11 +6,9 @@ import { showLength } from "../../features/userFav.js";
 import { useSelector } from "react-redux";
 import { setNewPosts } from "../../features/userFav.js";
 import { showPosts } from "../../features/userFav.js";
-const Post = ({ message, buttons, children, messageClass, userPic, deleteButton }) => {
+const Post = ({ message, buttons, children, userPic, deleteButton }) => {
   // Мессаги на кнопкке
   const [copyMessage, setCopyMessage] = useState("Скопировать");
-  // Блокировать кнопку
-  const [copyButtonDisabled, setCopyButtonDisabled] = useState(false);
   // Redux инфо
   const postsLength = useSelector(showLength);
   const dispatch = useDispatch();
@@ -21,7 +19,7 @@ const Post = ({ message, buttons, children, messageClass, userPic, deleteButton 
   };
 
   //Добавление в избранное
-  const sendToFavourites = () => {
+  const sendPastaToFavourites = () => {
     if (posts.some((post) => post.includes(message))) return;
     dispatch(setNewLength(postsLength + 1));
     const updatedAllPosts = [message, ...posts];
@@ -30,19 +28,20 @@ const Post = ({ message, buttons, children, messageClass, userPic, deleteButton 
   };
 
   //При удаление мы перезаписываем посты в редаксе
-  const handleDeletePasta = () => {
+  const deletePastaFromFavourites = () => {
     dispatch(setNewLength(postsLength - 1));
     const newFilteredMassive = [...posts.filter((item) => item !== message)];
     dispatch(setNewPosts(newFilteredMassive));
     localStorage.setItem("posts", JSON.stringify(newFilteredMassive));
   };
 
-  const handleCopyButtonText = () => {
+  // Скопировать пасту
+  const copyPasta = () => {
     setCopyMessage("Скопировано ✓");
+    navigator.clipboard.writeText(message);
     setTimeout(() => {
       setCopyMessage("Скопировать");
     }, 1000);
-    navigator.clipboard.writeText(message);
   };
 
   return (
@@ -57,34 +56,33 @@ const Post = ({ message, buttons, children, messageClass, userPic, deleteButton 
         className="post__pic"
         onClick={() => window.open("https://github.com/EternalSide", "_blank")}
       />
-
-      <div className={messageClass ? "post__container post__container_message" : "post__container"}>
+      {/* Пост с разметкой внутри или текстом */}
+      <div className="post__container">
         <div className="pasta ">
-          <span className="post__pastabefore">EternalSide</span>
+          <span className="post__pastabefore">EternalSide:</span>
           {message ? message : children}
         </div>
 
-        {/* Если есть кнопки */}
+        {/* Посты с кнопками */}
         {buttons && (
           <div className="post__buttons">
             <div className="post__buttons-container">
               <button
-                onClick={handleCopyButtonText}
+                onClick={copyPasta}
                 type="button"
                 className={copyMessage === "Скопировано ✓" ? "post__button post__button_green" : "post__button"}
-                disabled={copyButtonDisabled}
               >
                 {copyMessage}
               </button>
               {deleteButton ? (
-                <button type="button" onClick={handleDeletePasta} className="post__button post__button_green">
+                <button type="button" onClick={deletePastaFromFavourites} className="post__button post__button_green">
                   Удалить
                 </button>
               ) : (
                 <button
                   type="button"
                   disabled={buttonInFavourites() ? true : false}
-                  onClick={sendToFavourites}
+                  onClick={sendPastaToFavourites}
                   className={buttonInFavourites() ? "post__button post__button_green" : "post__button"}
                 >
                   {buttonInFavourites() ? "В избранном ✓" : "В избранное"}

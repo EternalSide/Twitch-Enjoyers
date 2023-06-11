@@ -11,6 +11,16 @@ a {
   text-decoration: none;
   color: white;
 }
+.zxc {
+  display: flex !important;
+}
+.arrow-back {
+  position: fixed;
+  top: 10px;
+  left: 5px;
+  font-size: 40px !important;
+  cursor: pointer;
+}
 .appBody {
   display: flex;
   height: 100vh;
@@ -88,5 +98,19 @@ li {
   }
   .main-block {
     padding-right: 25px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .main__container {
+    display: none;
+  }
+  .left-menu {
+    max-width: 620px;
+    width: 100%;
+  }
+  .left-menu__test {
+    max-width: 620px;
+    width: 100%;
   }
 }
