@@ -49,12 +49,7 @@ function Menu() {
           icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJFvDAtbG-cpaYDEhbIy0Bw5ALqYxD2n2yWgrdwLkLZorBnb5ORwfj-_IDU5QXabOCJYg&usqp=CAU"
         />
 
-        <MenuItem
-          link
-          name="Telegram"
-          url="https://t.me/eternalmaybe"
-          icon="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png"
-        />
+    
         <MenuItem
           link
           name="Github"
