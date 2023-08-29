@@ -1,13 +1,13 @@
 .notFound {
-  display: flex;
-  align-items: center;
-  padding-top: 5%;
-  justify-content: flex-start;
-  flex-direction: column;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
 }
 
 .notFound img {
-  width: 50%;
-  height: 80%;
-  margin-bottom: 20px;
+	width: 50%;
+	height: 80%;
+	margin-bottom: 20px;
+	border-radius: 10%;
 }

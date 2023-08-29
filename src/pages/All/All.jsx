@@ -1,17 +1,21 @@
-import { Pasti } from "../../materials/Pasti";
-import Post from "../../components/Post/Post";
-import Form from "../../components/Form/Form";
+import { Pasti } from '../../materials/Pasti';
+import Post from '../../components/Post/Post';
+import Form from '../../components/Form/Form';
+import './All.css';
 
-import "./All.css";
 const All = () => {
-  return (
-    <>
-      <Form disabled />
-      {Pasti.reverse().map((pasta) => (
-        <Post buttons message={pasta.text} />
-      ))}
-    </>
-  );
+	return (
+		<>
+			<Form disabled />
+			{Pasti.reverse().map((pasta, i) => (
+				<Post
+					key={i}
+					buttons={true}
+					message={pasta.text}
+				/>
+			))}
+		</>
+	);
 };
 
 export default All;
